@@ -1,0 +1,32 @@
+host: 47.100.22.151
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${host}:8762/eureka/
+spring:
+  application:
+    name: aliyun-user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 060615Qf
+    sql-script-encoding: UTF-8
+    url: jdbc:mysql://${host}:3306/aliyun
+  rabbitmq:
+    username: windseeker
+    password: 060615qf
+    host: ${host}
+  redis:
+    host: ${host}
+    port: 6379
+    password: 060615qf
+---
+spring:
+  profiles: peer1
+server:
+  port: 7001
+---
+spring:
+  profiles: peer2
+server:
+  port: 7002
